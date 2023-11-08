@@ -5,6 +5,7 @@ import mongoose, { Schema } from "mongoose"
 class ConexionMongoose{
    
     static userSchema = null
+    static comidaSchema = null
    
     static conectar = async  _ =>{
         mongoose.connect(config.STRCNX);
@@ -25,9 +26,17 @@ class ConexionMongoose{
            consumer:Boolean,
            contact:String 
         })
+        this.comidaSchema = new Schema({
+            name:String,
+            description:String,
+            price:Number,
+            restaurantId:Number,
+            quantity:Number,
+        })
         
         return this.userSchema;
     }
+
 
 
 
