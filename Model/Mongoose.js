@@ -34,7 +34,7 @@ class ConexionMongoose{
             quantity:Number,
         })
         
-        return this.userSchema;
+        return this.userSchema, this.foodSchema
     }
 
 

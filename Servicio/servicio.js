@@ -8,23 +8,23 @@ class Servicio {
         this.userModel = new UserModel()
     }
 
-   guardarComida = async (comida, restoId) => {
-    const comidaGuardada = await this.foodModel.guardarComida(comida, restoId)
+   guardarComida = async (comida) => {
+    const comidaGuardada = await this.foodModel.guardarComida(comida)
     return comidaGuardada
    }
 
-   obtenerComidas = async (comidaId, restoId) => {
-    const comidas = await this.foodModel.obtenerComidas(comidaId, restoId)
+   obtenerComidas = async (comidaId) => {
+    const comidas = await this.foodModel.obtenerComidas(comidaId)
     return comidas
    }
 
    actualizarComida = async (comidaId, comidaNueva) => {
-    const comidaActualizada = await this.foodModel.actualizarComidaPorId(comidaId, restoId, comidaNueva)
+    const comidaActualizada = await this.foodModel.actualizarComidaPorId(comidaId, comidaNueva)
     return comidaActualizada
    }
 
-   eliminarComida = async (comidaId, restoId) => {
-    const comidaEliminada = await this.foodModel.eliminarComida(comidaId, restoId)
+   eliminarComida = async (comidaId) => {
+    const comidaEliminada = await this.foodModel.eliminarComida(comidaId)
     return comidaEliminada
    }
 
