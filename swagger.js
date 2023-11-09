@@ -2,8 +2,8 @@ import swaggerAutogen from 'swagger-autogen';
 
 const doc = {
   info: {
-    title: 'My API',
-    description: 'Description'
+    title: 'Tp final TP2',
+    description: 'Hola'
   },
   host: 'localhost:3000'
 };

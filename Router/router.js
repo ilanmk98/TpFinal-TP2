@@ -21,7 +21,7 @@ class Router {
 
     this.router.get('/obtenerUsuarios',this.controladorUsuario.obtenerUsuarios);
     this.router.post('/guardarUsuario',this.controladorUsuario.guardarUsuario);
-
+    this.router.post('/agregarComidaUsuario',this.controladorUsuario.agregarComidaUsuario)
 
     this.router.use((req, res, next) => {
       const error = new Error('Ruta no encontrada');

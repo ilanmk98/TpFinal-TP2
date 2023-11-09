@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 class UserModel{
     constructor(){
         this.userSchema=ConexionMongoose.getUserSchema();
+        this.foodSchema = ConexionMongoose.getFoodSchema();
     }
 
     guardarUsuario = async (user)=>{
@@ -21,7 +22,6 @@ class UserModel{
   })
   .catch((error) => {
     console.error('Error al guardar el documento:', error);
-    throw new Error('Test error')
   });
     }
 
@@ -29,6 +29,19 @@ class UserModel{
         const User = mongoose.model('User',ConexionMongoose.userSchema)
         const usuarios = await User.find({})
         return usuarios;
+    }
+
+    findUserById = async (idUsuario)=>{
+      const User = mongoose.model('User',ConexionMongoose.userSchema)
+      const usuario = await User.findById(idUsuario);
+      return usuario;
+     
+    }
+
+    agregarComidaUsuario = async (usuario)=>{
+        await usuario.save();
+        console.log('Comida agregada con éxito al usuario');
+     
     }
 }
 export default UserModel

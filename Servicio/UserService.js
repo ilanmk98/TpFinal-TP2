@@ -1,16 +1,35 @@
 import UserModel from "../Model/UserModel.js"
+import FoodService from "./servicioComida.js"
 class UserService{
 
     constructor(){
         this.model= new UserModel()
+        this.foodService = new FoodService()
     }
     getAllUsers=()=>{
         console.log('llego a servicio');
         return this.model.getAllUsers();
     }
     saveUser=async(user)=>{
-        this.checkTypes(user);
+        //this.checkTypes(user);
         return await this.model.guardarUsuario(user);
+    }
+    agregarComidaUsuario = async (idUsuario,idComida)=>{
+      const usuario = await this.findUserById(idUsuario)
+      const comida = await this.foodService.findFoodById(idComida)
+      usuario.comidas.push(comida.id)
+      await this.model.agregarComidaUsuario(usuario);
+     
+    }
+
+    findUserById = async (idUsuario)=>{
+        const usuario = await this.model.findUserById(idUsuario)
+        if (!usuario) {
+          console.log("Error usuario");
+          throw new Error('Usuario no encontrado');
+        }
+        return usuario;
+      
     }
 
     checkTypes=(user)=>{

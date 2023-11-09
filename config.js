@@ -1,4 +1,4 @@
-const PORT = 8081;
+const PORT = 3000;
 const STRCNX = 'mongodb+srv://ilancabj:aguanteboca@cluster0.29eckvn.mongodb.net/?retryWrites=true'
 const BASE = 'TpFinal'
 

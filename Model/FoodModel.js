@@ -62,5 +62,11 @@ class FoodModel{
     throw error;
   }
 }
+
+findFoodById = async (idComida)=>{
+  const Food = mongoose.model('Food',this.foodSchema)
+  const comida = await Food.findById(idComida)
+  return comida;
+}
 }
 export default FoodModel
