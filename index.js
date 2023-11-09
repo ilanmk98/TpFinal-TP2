@@ -1,7 +1,7 @@
 import express from 'express'
 import conexBd from './Model/Mongoose.js'
 import config from './config.js'
-import UserModel from './Model/UserModel.js'
+import UserModel from './Model/FoodModel.js'
 import RouterApp from './Router/router.js'
 
 const app = express()
@@ -18,5 +18,5 @@ server.on('error', error => console.log(`Error en servidor: ${error.message}`))
 
 const model = new UserModel();
 
-
-await model.getAllUsers()
+const comidas = await model.obtenerComidas()
+console.log(comidas);
