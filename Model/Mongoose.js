@@ -13,7 +13,7 @@ class ConexionMongoose{
         db.on('error', console.error.bind(console, 'Error de conexión a la base de datos:'));
         db.once('open', () => {
           console.log('Conexión exitosa a la base de datos');
-          this.loadSchemas();
+          //this.loadSchemas();
         });
         
     }
