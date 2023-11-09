@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 
 class UserModel{
     constructor(){
-        this.userSchema=ConexionMongoose.loadSchemas();
+        this.userSchema=ConexionMongoose.userSchema;
     }
 
 

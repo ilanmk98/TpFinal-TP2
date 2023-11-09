@@ -3,14 +3,15 @@ import mongoose from "mongoose"
 
 class FoodModel{
     constructor(){
-        this.foodSchema=ConexionMongoose.loadSchemas();
+      ConexionMongoose.loadSchemas()
+      this.foodSchema=ConexionMongoose.comidaSchema;
     }
 
 
 
     guardarComida = async (food)=>{
       
-        const Food = mongoose.model('Food',ConexionMongoose.foodSchema)
+        const Food = mongoose.model('Food',this.foodSchema)
         const toSave = new Food({
             name:food.name,
             description:food.description,
@@ -27,10 +28,9 @@ class FoodModel{
     });
     }
 
-  obtenerComidas = async(comidaId)=>{
-      const Food = mongoose.model('Food',ConexionMongoose.foodSchema)
+  obtenerComidas = async()=>{
+      const Food = mongoose.model('Food',this.foodSchema)
       const comidas = await Food.find({})
-      console.log(comidas);
       return comidas
   }
 
