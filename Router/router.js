@@ -2,6 +2,8 @@ import express from 'express';
 import ControladorComida from '../Controlador/controladorComida.js';
 import ControladorUsuario from '../Controlador/controladorUsuario.js';
 
+
+
 class Router {
   constructor() {
     this.router = express.Router();
@@ -14,8 +16,8 @@ class Router {
    
     this.router.get('/obtenerComidas', this.controladorComida.obtenerComidas);
     this.router.post('/guardarComida', this.controladorComida.guardarComida);
-    this.router.put('/:id?', this.controladorComida.actualizarComida);
-    this.router.delete('/:id?', this.controladorComida.eliminarComida);
+    this.router.put('/editarComida/:id?', this.controladorComida.actualizarComida);
+    this.router.delete('/eliminarComida/:id?', this.controladorComida.eliminarComida);
 
     this.router.get('/obtenerUsuarios',this.controladorUsuario.obtenerUsuarios);
     this.router.post('/guardarUsuario',this.controladorUsuario.guardarUsuario);

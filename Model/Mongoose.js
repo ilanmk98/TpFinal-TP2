@@ -23,7 +23,11 @@ class ConexionMongoose{
             user:String,
             pass:String,
            consumer:Boolean,
-           contact:String 
+           contact:String,
+           comidas:[{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Comida'
+           }]
         })
         this.comidaSchema = new Schema({
             name:String,
