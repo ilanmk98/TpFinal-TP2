@@ -1,19 +1,25 @@
 import express from 'express';
-import Controlador from '../Controlador/controlador.js';
+import ControladorComida from '../Controlador/controladorComida.js';
+import ControladorUsuario from '../Controlador/controladorUsuario.js';
 
 class Router {
   constructor() {
     this.router = express.Router();
-    this.controlador = new Controlador();
+    this.controladorComida = new ControladorComida();
+    this.controladorUsuario = new ControladorUsuario();
     console.log('Arranca router');
   }
 
   start() {
    
-    this.router.get('/obtenerComidas', this.controlador.obtenerComidas);
-    this.router.post('/guardarComida', this.controlador.guardarComida);
-    this.router.put('/:id?', this.controlador.actualizarComida);
-    this.router.delete('/:id?', this.controlador.eliminarComida);
+    this.router.get('/obtenerComidas', this.controladorComida.obtenerComidas);
+    this.router.post('/guardarComida', this.controladorComida.guardarComida);
+    this.router.put('/:id?', this.controladorComida.actualizarComida);
+    this.router.delete('/:id?', this.controladorComida.eliminarComida);
+
+    this.router.get('/obtenerUsuarios',this.controladorUsuario.obtenerUsuarios);
+    this.router.post('/guardarUsuario',this.controladorUsuario.guardarUsuario);
+
 
     this.router.use((req, res, next) => {
       const error = new Error('Ruta no encontrada');

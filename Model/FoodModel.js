@@ -3,8 +3,7 @@ import mongoose from "mongoose"
 
 class FoodModel{
     constructor(){
-      ConexionMongoose.loadSchemas()
-      this.foodSchema=ConexionMongoose.comidaSchema;
+      this.foodSchema=ConexionMongoose.getFoodSchema();
     }
 
 
