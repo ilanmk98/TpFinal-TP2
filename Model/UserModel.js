@@ -41,7 +41,6 @@ class UserModel{
     agregarComidaUsuario = async (usuario)=>{
         await usuario.save();
         console.log('Comida agregada con éxito al usuario');
-     
     }
 }
 export default UserModel
