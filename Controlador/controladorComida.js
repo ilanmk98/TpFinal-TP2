@@ -1,4 +1,4 @@
-import Servicio from '../Servicio/servicio.js'
+import Servicio from '../Servicio/servicioComida.js'
 
 class Controlador {
     constructor() {

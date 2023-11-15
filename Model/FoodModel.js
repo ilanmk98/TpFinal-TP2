@@ -3,8 +3,7 @@ import mongoose from "mongoose"
 
 class FoodModel{
     constructor(){
-      ConexionMongoose.loadSchemas()
-      this.foodSchema=ConexionMongoose.comidaSchema;
+      this.foodSchema=ConexionMongoose.getFoodSchema();
     }
 
 
@@ -62,6 +61,12 @@ class FoodModel{
     console.error('Error al eliminar la comida:', error);
     throw error;
   }
+}
+
+findFoodById = async (idComida)=>{
+  const Food = mongoose.model('Food',this.foodSchema)
+  const comida = await Food.findById(idComida)
+  return comida;
 }
 }
 export default FoodModel

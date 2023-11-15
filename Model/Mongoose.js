@@ -1,5 +1,4 @@
 import config from '../config.js'
-//const mongoose = require('mongoose');
 import mongoose, { Schema } from "mongoose"
 
 class ConexionMongoose{
@@ -24,7 +23,11 @@ class ConexionMongoose{
             user:String,
             pass:String,
            consumer:Boolean,
-           contact:String 
+           contact:String,
+           comidas:[{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Comida'
+           }]
         })
         this.comidaSchema = new Schema({
             name:String,
@@ -34,7 +37,18 @@ class ConexionMongoose{
             quantity:Number,
         })
         
-        return this.userSchema, this.foodSchema
+    }
+
+    static getUserSchema()
+    {
+        if (this.userSchema===null)
+        {  this.loadSchemas(); }    
+        return this.userSchema;
+    }
+    static getFoodSchema(){
+        if (this.comidaSchema===null)
+        {  this.loadSchemas(); }    
+        return this.comidaSchema;
     }
 
 
