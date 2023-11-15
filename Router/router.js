@@ -16,6 +16,7 @@ class Router {
    
     this.router.get('/obtenerComidas', this.controladorComida.obtenerComidas);
     this.router.post('/guardarComida', this.controladorComida.guardarComida);
+    this.router.get('/mostrarComidas',this.controladorComida.mostrarComidas)
     this.router.put('/editarComida/:id?', this.controladorComida.actualizarComida);
     this.router.delete('/eliminarComida/:id?', this.controladorComida.eliminarComida);
 

@@ -32,6 +32,12 @@ class FoodModel{
       return comidas
   }
 
+  mostrarComidas = async()=>{
+    const Food = mongoose.model('Food',this.foodSchema)
+    const comidas = await Food.find({ quantity: { $gt: 0 } })
+    return comidas
+  }
+
    actualizarComida = async (id, datosActualizados) => {
   try {
     const comidaActualizada = await Food.findByIdAndUpdate(id, datosActualizados, { new: true });

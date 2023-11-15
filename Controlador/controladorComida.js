@@ -19,6 +19,11 @@ class Controlador {
         res.json(comidas)
     }
 
+    mostrarComidas = async(req,res)=>{
+        const comidas = await this.servicio.mostrarComidas();
+        res.json(comidas)
+    }
+
     actualizarComida = async(req,res) => {
         const { comidaId } = req.params
         const comidaNueva = req.body 

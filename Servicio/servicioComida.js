@@ -1,5 +1,5 @@
 import FoodModel from '../Model/FoodModel.js'
-
+import axios from 'axios'
 
 
 class Servicio {
@@ -16,6 +16,14 @@ class Servicio {
    obtenerComidas = async () => {
     const comidas = await this.foodModel.obtenerComidas()
     return comidas
+   }
+
+   mostrarComidas = async()=>{
+    const response = await axios.get('https://api.bluelytics.com.ar/v2/latest');
+    const valorBlue = Number(response.data.blue.value_sell)
+    let comidas = await this.foodModel.mostrarComidas();
+    comidas.forEach(comida=>{comida.price*=valorBlue})
+    return comidas;
    }
 
    actualizarComida = async (comidaId, comidaNueva) => {
