@@ -9,13 +9,12 @@ class FoodModel{
 
 
     guardarComida = async (food)=>{
-      
         const Food = mongoose.model('Food',this.foodSchema)
         const toSave = new Food({
             name:food.name,
             description:food.description,
             price:food.price,
-            restaurantId: food.restaurantId,
+            restaurantId:food.restaurantId,
             quantity:food.quantity
         })
         toSave.save()

@@ -6,7 +6,8 @@ class Controlador {
     }
 
     guardarComida = async (req, res) => {
-        const comida = req.comida
+        const comida = req.body
+        console.log(comida);
         const comidaGuardada = await this.servicio.guardarComida(comida)
         res.json(comidaGuardada)
     }

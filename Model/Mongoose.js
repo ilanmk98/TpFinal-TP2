@@ -25,15 +25,15 @@ class ConexionMongoose{
            consumer:Boolean,
            contact:String,
            comidas:[{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Comida'
+            type:Schema.Types.ObjectId,
+            ref:'Food'
            }]
         })
         this.comidaSchema = new Schema({
             name:String,
             description:String,
             price:Number,
-            restaurantId:Number,
+            restaurantId:mongoose.Schema.Types.ObjectId,
             quantity:Number,
         })
         

@@ -20,6 +20,7 @@ class Router {
     this.router.delete('/eliminarComida/:id?', this.controladorComida.eliminarComida);
 
     this.router.get('/obtenerUsuarios',this.controladorUsuario.obtenerUsuarios);
+    this.router.post('/obtenerComidaUsuario',this.controladorUsuario.obtenerComidaUsuario);
     this.router.post('/guardarUsuario',this.controladorUsuario.guardarUsuario);
     this.router.post('/agregarComidaUsuario',this.controladorUsuario.agregarComidaUsuario)
 
