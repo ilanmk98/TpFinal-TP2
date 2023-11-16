@@ -14,8 +14,8 @@ class Controlador {
 
     obtenerComidas = async(req,res) => {
         console.log('controller');
-        // const { comidaId } = req.params
-        const comidas = await this.servicio.obtenerComidas()
+        const { id } = req.params
+        const comidas = await this.servicio.obtenerComidas(id)
         res.json(comidas)
     }
 
@@ -25,15 +25,15 @@ class Controlador {
     }
 
     actualizarComida = async(req,res) => {
-        const { comidaId } = req.params
+        const { id } = req.params
         const comidaNueva = req.body 
-        const comidaActualizada = await this.servicio.actualizarComida(comidaId, comidaNueva)
+        const comidaActualizada = await this.servicio.actualizarComida(id, comidaNueva)
         res.json(comidaActualizada)
     }
 
-    eliminarComida = async (req,res) => {
-        const { comidaId } = req.params
-        const comidaEliminada = await this.servicio.eliminarComida(comidaId)
+    eliminarComida = async(req,res) => {
+        const { id } = req.params
+        const comidaEliminada = await this.servicio.eliminarComida(id)
         res.json(comidaEliminada)
     }
 }

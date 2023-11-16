@@ -38,7 +38,7 @@ class UserModel{
      
     }
 
-    agregarComidaUsuario = async (usuario)=>{
+    agregarUsuarioUsuario = async (usuario)=>{
         await usuario.save();
         console.log('Comida agregada con éxito al usuario');
     }
@@ -48,5 +48,19 @@ class UserModel{
       const usuarioTraido = await usuario.populate('comidas');
       return usuarioTraido.comidas
     }
+
+    actualizarUsuario = async (id, datosActualizados) => {
+      const User = mongoose.model('User',ConexionMongoose.userSchema)
+      const usuarioActualizado = await User.findByIdAndUpdate(id, datosActualizados, { new: true });
+      return usuarioActualizado;
+     }
+
+    
+  eliminarUsuario = async (id) => {
+    const User = mongoose.model('User',ConexionMongoose.userSchema)
+    const UsuarioAEliminar = await this.findUserById(id)
+    await User.deleteOne( { _id: id })
+    return UsuarioAEliminar
+}
 }
 export default UserModel

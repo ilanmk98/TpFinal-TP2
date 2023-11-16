@@ -44,5 +44,20 @@ class Controlador {
         }
     }
 
+    actualizarUsuario = async(req,res) => {
+        const { id } = req.params
+        const comidaNueva = req.body 
+        const comidaActualizada = await this.servicio.actualizarUsuario(id, comidaNueva)
+        res.json(comidaActualizada)
+    }
+
+    eliminarUsuario = async(req,res) => {
+        const { id } = req.params
+        const UsuarioEliminado = await this.servicio.eliminarUsuario(id)
+        res.json(UsuarioEliminado)
+    }
+
+
+
 
 } export default Controlador

@@ -13,8 +13,8 @@ class Servicio {
     return comidaGuardada
    }
 
-   obtenerComidas = async () => {
-    const comidas = await this.foodModel.obtenerComidas()
+   obtenerComidas = async (id) => {
+    const comidas = await this.foodModel.obtenerComidas(id)
     return comidas
    }
 
@@ -26,24 +26,16 @@ class Servicio {
     return comidas;
    }
 
-   actualizarComida = async (comidaId, comidaNueva) => {
-    const comidaActualizada = await this.foodModel.actualizarComidaPorId(comidaId, comidaNueva)
+   actualizarComida = async (id, comidaNueva) => {
+    const comidaActualizada = await this.foodModel.actualizarComida(id, comidaNueva)
     return comidaActualizada
    }
 
-   eliminarComida = async (comidaId) => {
+   eliminarComida = async comidaId => {
     const comidaEliminada = await this.foodModel.eliminarComida(comidaId)
     return comidaEliminada
    }
-   findFoodById = async (idComida)=>{
-    const comida = await this.foodModel.findFoodById(idComida)
-    if(!comida)
-    {
-        throw new Error('comida no encontrado');
-    }
-    return comida;
-   }
-
+  
 }
 
 

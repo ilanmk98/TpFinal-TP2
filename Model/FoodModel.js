@@ -1,5 +1,5 @@
 import ConexionMongoose from "./Mongoose.js";
-import mongoose from "mongoose"
+import mongoose, { mongo } from "mongoose"
 
 class FoodModel{
     constructor(){
@@ -26,10 +26,16 @@ class FoodModel{
     });
     }
 
-  obtenerComidas = async()=>{
-      const Food = mongoose.model('Food',this.foodSchema)
-      const comidas = await Food.find({})
-      return comidas
+  obtenerComidas = async (id) =>{
+    const Food = mongoose.model('Food',this.foodSchema)
+      if(id){
+        const comida = await Food.findOne({ _id: id });
+        return comida
+      } else{
+        const comidas = await Food.find({})
+        return comidas
+      }
+      
   }
 
   mostrarComidas = async()=>{
@@ -39,39 +45,20 @@ class FoodModel{
   }
 
    actualizarComida = async (id, datosActualizados) => {
-  try {
+    const Food = mongoose.model('Food',this.foodSchema)
+    console.log(id)
+    console.log(datosActualizados)
     const comidaActualizada = await Food.findByIdAndUpdate(id, datosActualizados, { new: true });
-    if (!comidaActualizada) {
-      return null;
-    }
-    console.log('Comida actualizada:', comidaActualizada);
     return comidaActualizada;
-  } catch (error) {
-    console.error('Error al actualizar la comida:', error);
-    throw error;
-  }
+   }
+
+  eliminarComida = async (id) => {
+    const Food = mongoose.model('Food',this.foodSchema)
+    const comidaAEliminar = await this.obtenerComidas(id)
+    await Food.deleteOne( { _id: id })
+    return comidaAEliminar
 }
 
-  eliminarComidaPorId = async (id) => {
-  try {
-    const resultado = await Food.findByIdAndRemove(id);
 
-    if (!resultado) {
-      console.log('La comida con el ID proporcionado no se encontró.');
-      return; 
-    }
-
-    console.log('Comida eliminada con éxito.');
-  } catch (error) {
-    console.error('Error al eliminar la comida:', error);
-    throw error;
-  }
-}
-
-findFoodById = async (idComida)=>{
-  const Food = mongoose.model('Food',this.foodSchema)
-  const comida = await Food.findById(idComida)
-  return comida;
-}
 }
 export default FoodModel

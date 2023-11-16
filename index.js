@@ -1,7 +1,7 @@
 import express from 'express'
 import conexBd from './Model/Mongoose.js'
 import config from './config.js'
-import RouterApp from './router/router.js'
+import RouterApp from './Router/router.js'
 import swaggerUi from 'swagger-ui-express'
 import swaggerFile from './swagger-output.json' assert { type: "json" }
 

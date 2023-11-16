@@ -40,6 +40,17 @@ class UserService{
      
     }
 
+    actualizarUsuario = async (id, comidaNueva) => {
+      const comidaActualizada = await this.model.actualizarUsuario(id, comidaNueva)
+      return comidaActualizada
+     }
+
+
+    eliminarUsuario = async usuarioId => {
+      const usuarioEliminado = await this.model.eliminarUsuario(usuarioId)
+      return usuarioEliminado
+     }
+
     checkTypes=(user)=>{
         if (
             typeof user === 'object' &&
