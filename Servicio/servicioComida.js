@@ -1,5 +1,6 @@
 import FoodModel from '../Model/FoodModel.js'
 import axios from 'axios'
+import {validar} from "./validaciones/comida.js"
 
 
 class Servicio {
@@ -8,9 +9,16 @@ class Servicio {
         
     }
 
-   guardarComida = async (comida) => {
-    const comidaGuardada = await this.foodModel.guardarComida(comida)
-    return comidaGuardada
+   guardarComida = async comida => {
+    const res = validar(comida)
+    if(res.result){
+        const comidaGuardada = await this.foodModel.guardarComida(comida)
+        return comidaGuardada
+    }
+    else{
+        console.log(res.error)
+        throw res.error
+    }
    }
 
    obtenerComidas = async (id) => {
