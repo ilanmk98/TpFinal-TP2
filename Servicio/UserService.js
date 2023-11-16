@@ -1,5 +1,7 @@
 import UserModel from "../Model/UserModel.js"
 import FoodService from "./servicioComida.js"
+import { validar } from "./validaciones/user.js"
+
 class UserService{
 
     constructor(){
@@ -11,8 +13,16 @@ class UserService{
         return this.model.getAllUsers();
     }
     saveUser=async(user)=>{
-        //this.checkTypes(user);
-        return await this.model.guardarUsuario(user);
+        const res = validar(user)
+        if(res.result){
+          const savedUser = await this.model.guardarUsuario(user);
+          return savedUser
+        }
+        else{
+          console.log(res.error)
+          throw res.error
+        }
+        
     }
     agregarComidaUsuario = async (idUsuario,idComida)=>{
       const usuario = await this.findUserById(idUsuario)
