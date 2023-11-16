@@ -62,5 +62,11 @@ class UserModel{
     await User.deleteOne( { _id: id })
     return UsuarioAEliminar
 }
+
+  puedeLogearse = async (name, pass) => {
+    const User = mongoose.model('User',ConexionMongoose.userSchema)
+    const usuarioBuscado = await User.findOne({ user: name, pass: pass });
+    return usuarioBuscado
+  }
 }
 export default UserModel

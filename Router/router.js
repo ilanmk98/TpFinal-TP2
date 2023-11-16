@@ -13,13 +13,14 @@ class Router {
   }
 
   start() {
-   
+    
     this.router.get('/obtenerComidas/:id?', this.controladorComida.obtenerComidas);
     this.router.post('/guardarComida', this.controladorComida.guardarComida);
     this.router.get('/mostrarComidas',this.controladorComida.mostrarComidas)
     this.router.put('/editarComida/:id', this.controladorComida.actualizarComida);
     this.router.delete('/eliminarComida/:id', this.controladorComida.eliminarComida);
 
+    this.router.post('/login', this.controladorUsuario.login); 
     this.router.get('/obtenerUsuarios',this.controladorUsuario.obtenerUsuarios);
     this.router.post('/obtenerComidaUsuario',this.controladorUsuario.obtenerComidaUsuario);
     this.router.post('/guardarUsuario',this.controladorUsuario.guardarUsuario);
