@@ -1,5 +1,5 @@
 import ConexionMongoose from "./Mongoose.js";
-import mongoose from "mongoose"
+import mongoose, { mongo } from "mongoose"
 
 class UserModel{
     constructor(){
@@ -41,6 +41,13 @@ class UserModel{
     agregarComidaUsuario = async (usuario)=>{
         await usuario.save();
         console.log('Comida agregada con éxito al usuario');
+    }
+
+    obtenerComidasUsuario = async (usuario)=>{
+      const Comida = mongoose.model('Food',this.foodSchema)
+      const User = mongoose.model('User',ConexionMongoose.userSchema)
+        const usuarioTraido = await User.findById(usuario._id).populate('comidas');
+       return usuarioTraido.comidas
     }
 }
 export default UserModel

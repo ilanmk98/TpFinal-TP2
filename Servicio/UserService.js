@@ -17,7 +17,8 @@ class UserService{
     agregarComidaUsuario = async (idUsuario,idComida)=>{
       const usuario = await this.findUserById(idUsuario)
       const comida = await this.foodService.findFoodById(idComida)
-      usuario.comidas.push(comida.id)
+      console.log(comida);
+      usuario.comidas.push(comida._id)
       await this.model.agregarComidaUsuario(usuario);
      
     }
@@ -30,6 +31,13 @@ class UserService{
         }
         return usuario;
       
+    }
+
+    obtenerComidasUsuario = async (idUsuario)=>{
+      const usuario = await this.findUserById(idUsuario);
+      const comidas = await this.model.obtenerComidasUsuario(usuario)
+      return comidas;
+     
     }
 
     checkTypes=(user)=>{

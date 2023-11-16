@@ -9,13 +9,12 @@ class FoodModel{
 
 
     guardarComida = async (food)=>{
-      
         const Food = mongoose.model('Food',this.foodSchema)
         const toSave = new Food({
             name:food.name,
             description:food.description,
             price:food.price,
-            restaurantId: food.restaurantId,
+            restaurantId:food.restaurantId,
             quantity:food.quantity
         })
         toSave.save()
@@ -31,6 +30,12 @@ class FoodModel{
       const Food = mongoose.model('Food',this.foodSchema)
       const comidas = await Food.find({})
       return comidas
+  }
+
+  mostrarComidas = async()=>{
+    const Food = mongoose.model('Food',this.foodSchema)
+    const comidas = await Food.find({ quantity: { $gt: 0 } })
+    return comidas
   }
 
    actualizarComida = async (id, datosActualizados) => {

@@ -32,5 +32,17 @@ class Controlador {
         }
     }
 
+    obtenerComidaUsuario = async (req,res)=>{
+        const idUsuario = req.body.id;
+        try{
+            const comidas = await this.servicio.obtenerComidasUsuario(idUsuario)
+            res.status(200).json({mensaje:comidas})
+        }
+        catch (error)
+        {
+            res.status(400).json({error:error.message})
+        }
+    }
+
 
 } export default Controlador
