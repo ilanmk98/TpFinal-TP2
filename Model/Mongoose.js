@@ -20,21 +20,21 @@ class ConexionMongoose{
    static loadSchemas = ()=>{
         console.log('Cargando schemas');
         this.userSchema = new Schema({
-            user:String,
-            pass:String,
-           consumer:Boolean,
-           contact:String,
+            user:{type:String,required:true},
+            pass:{type:String,required:true},
+           consumer:{type:boolean,required:true},
+           contact:{type:String,required:true},
            comidas:[{
             type:Schema.Types.ObjectId,
             ref:'Food'
            }]
         })
         this.comidaSchema = new Schema({
-            name:String,
-            description:String,
-            price:Number,
-            restaurantId:mongoose.Schema.Types.ObjectId,
-            quantity:Number,
+            name:{type:String,required:true},
+            description:{type:String,required:true},
+            price:{type:Number,required:true},
+            restaurantId:{type:mongoose.Schema.Types.ObjectId,required:true},
+            quantity:{type:Number,required:true},
         })
         
     }
