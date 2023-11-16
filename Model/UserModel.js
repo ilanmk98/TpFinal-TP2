@@ -45,9 +45,8 @@ class UserModel{
 
     obtenerComidasUsuario = async (usuario)=>{
       const Comida = mongoose.model('Food',this.foodSchema)
-      const User = mongoose.model('User',ConexionMongoose.userSchema)
-        const usuarioTraido = await User.findById(usuario._id).populate('comidas');
-       return usuarioTraido.comidas
+      const usuarioTraido = await usuario.populate('comidas');
+      return usuarioTraido.comidas
     }
 }
 export default UserModel
