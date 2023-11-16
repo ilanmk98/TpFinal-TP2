@@ -22,7 +22,7 @@ class ConexionMongoose{
         this.userSchema = new Schema({
             user:{type:String,required:true},
             pass:{type:String,required:true},
-           consumer:{type:boolean,required:true},
+           consumer:{type:Boolean,required:true},
            contact:{type:String,required:true},
            comidas:[{
             type:Schema.Types.ObjectId,
