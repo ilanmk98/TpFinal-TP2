@@ -50,9 +50,18 @@ class UserService{
      
     }
 
-    actualizarUsuario = async (id, comidaNueva) => {
-      const comidaActualizada = await this.model.actualizarUsuario(id, comidaNueva)
-      return comidaActualizada
+    actualizarUsuario = async (id, usuarioNuevo) => {
+      const res = validar(user)
+      if(res.result){
+        const usuarioActualizado = await this.model.actualizarUsuario(id, usuarioNuevo)
+        return usuarioActualizado
+      }
+      else
+      {
+        console.log(res.error)
+          throw res.error
+      }
+      
      }
 
 

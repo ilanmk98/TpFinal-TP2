@@ -6,10 +6,14 @@ class Controlador {
     }
 
     guardarComida = async (req, res) => {
-        const comida = req.body
-        console.log(comida);
-        const comidaGuardada = await this.servicio.guardarComida(comida)
-        res.json(comidaGuardada)
+        try {
+            const comida = req.body
+            console.log(comida);
+            const comidaGuardada = await this.servicio.guardarComida(comida)
+            res.json(comidaGuardada)
+        } catch (error) {
+            res.status(400).json({error:error.message})
+        }
     }
 
     obtenerComidas = async(req,res) => {
@@ -25,10 +29,14 @@ class Controlador {
     }
 
     actualizarComida = async(req,res) => {
-        const { id } = req.params
-        const comidaNueva = req.body 
-        const comidaActualizada = await this.servicio.actualizarComida(id, comidaNueva)
-        res.json(comidaActualizada)
+       try {
+         const { id } = req.params
+         const comidaNueva = req.body 
+         const comidaActualizada = await this.servicio.actualizarComida(id, comidaNueva)
+         res.json(comidaActualizada)
+       } catch (error) {
+        res.status(400).json({error:error.message})
+       }
     }
 
     eliminarComida = async(req,res) => {
