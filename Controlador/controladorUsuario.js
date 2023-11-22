@@ -53,10 +53,14 @@ class Controlador {
     }
 
     actualizarUsuario = async(req,res) => {
-        const { id } = req.params
-        const comidaNueva = req.body 
-        const comidaActualizada = await this.servicio.actualizarUsuario(id, comidaNueva)
-        res.json(comidaActualizada)
+        try {
+            const { id } = req.params
+            const comidaNueva = req.body 
+            const comidaActualizada = await this.servicio.actualizarUsuario(id, comidaNueva)
+            res.json(comidaActualizada)
+        } catch (error) {
+            res.status(400).json({error:error.message})
+        }
     }
 
     eliminarUsuario = async(req,res) => {
