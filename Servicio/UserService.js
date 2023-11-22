@@ -61,6 +61,40 @@ class UserService{
       return usuarioEliminado
      }
 
-    
+     puedeLogearse = async (name, pass) => {
+      const usuarioBuscado = await this.model.puedeLogearse(name,pass)
+        if (usuarioBuscado) {
+            console.log('Usuario autenticado con éxito');
+            return true
+        } else {
+            console.log('Nombre de usuario o contraseña incorrectos');
+            return false
+        }
+     }
+
+    checkTypes=(user)=>{
+        if (
+            typeof user === 'object' &&
+            user.hasOwnProperty('user') &&
+            user.hasOwnProperty('pass') &&
+            user.hasOwnProperty('consumer') &&
+            user.hasOwnProperty('contact')
+          ) {
+            
+            if (
+              typeof user.user === 'string' &&
+              typeof user.pass === 'string' &&
+              typeof user.consumer === 'boolean' &&
+              typeof user.contact === 'string'
+            ) {
+              
+              console.log('El objeto de usuario es válido.');
+            } else {
+              throw new Error('El objeto de usuario tiene tipos incorrectos.');
+            }
+          } else {
+            throw new Error('El objeto de usuario no tiene todas las propiedades necesarias.');
+          }
+    }
 
 } export default UserService
