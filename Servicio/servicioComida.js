@@ -21,8 +21,8 @@ class Servicio {
     }
    }
 
-   obtenerComidas = async (id) => {
-    const comidas = await this.foodModel.obtenerComidas(id)
+   obtenerComidas = async () => {
+    const comidas = await this.foodModel.obtenerComidas()
     return comidas
    }
 

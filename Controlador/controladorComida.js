@@ -13,9 +13,7 @@ class Controlador {
     }
 
     obtenerComidas = async(req,res) => {
-        console.log('controller');
-        const { id } = req.params
-        const comidas = await this.servicio.obtenerComidas(id)
+        const comidas = await this.servicio.obtenerComidas()
         res.json(comidas)
     }
 
