@@ -1,21 +1,4 @@
-import express from 'express'
-import conexBd from './Model/Mongoose.js'
-import config from './config.js'
-import RouterApp from './Router/router.js'
-import swaggerUi from 'swagger-ui-express'
-import swaggerFile from './swagger-output.json' assert { type: "json" }
+import Server from "./server.js"
+import config from "./config.js"
 
-
-const app = express()
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
-
-app.use('/', new RouterApp().start())
-await conexBd.conectar()
-
-
-const PORT = config.PORT
-const server = app.listen(PORT, () => console.log(`Servidor express escuchando en http://localhost:${PORT}`))
-server.on('error', error => console.log(`Error en servidor: ${error.message}`))
-
+new Server(config.PORT, config.STRCNX).start()
