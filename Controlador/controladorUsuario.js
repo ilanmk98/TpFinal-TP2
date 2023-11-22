@@ -5,6 +5,14 @@ class Controlador {
         this.servicio = new UserService();
     }
 
+
+    login = async (req,res) => {
+        const name = req.body.name;
+        const pass = req.body.pass;
+        console.log(name, pass)
+        let usuarioEncontrado = await this.servicio.puedeLogearse(name, pass)
+        res.json(usuarioEncontrado)
+    }
     guardarUsuario = async(req,res)=>{
         const usuario = req.body;
         try {

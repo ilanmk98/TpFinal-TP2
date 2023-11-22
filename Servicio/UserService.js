@@ -61,6 +61,17 @@ class UserService{
       return usuarioEliminado
      }
 
+     puedeLogearse = async (name, pass) => {
+      const usuarioBuscado = await this.model.puedeLogearse(name,pass)
+        if (usuarioBuscado) {
+            console.log('Usuario autenticado con éxito');
+            return true
+        } else {
+            console.log('Nombre de usuario o contraseña incorrectos');
+            return false
+        }
+     }
+
     checkTypes=(user)=>{
         if (
             typeof user === 'object' &&
