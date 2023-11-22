@@ -1,7 +1,7 @@
 import { expect } from "chai"
 import supertest from "supertest"
 
-const request = supertest('http://localhost:8080')
+const request = supertest('http://127.0.0.1:3000')
 
 describe('test apirestful', () => {
     describe('GET', () => {
