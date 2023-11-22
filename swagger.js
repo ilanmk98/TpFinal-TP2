@@ -3,7 +3,7 @@ import swaggerAutogen from 'swagger-autogen';
 const doc = {
   info: {
     title: 'Tp final TP2',
-    description: 'Hola'
+    description: 'TpFinal'
   },
   host: 'localhost:3000'
 };

@@ -11,12 +11,17 @@
     "http"
   ],
   "paths": {
-    "/obtenerComidas": {
+    "/obtenerComidas/{id?}": {
       "get": {
-        "description": "",
+        "description": "Devuelve todas las comidas o la comida solicitada",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "Comidas",
+            "content":{
+              "application/json":{
+                
+              }
+            }
           }
         }
       }
@@ -31,7 +36,17 @@
         }
       }
     },
-    "/editarComida/{id?}": {
+    "/mostrarComidas": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/editarComida/{id}": {
       "put": {
         "description": "",
         "responses": {
@@ -41,7 +56,7 @@
         }
       }
     },
-    "/eliminarComida/{id?}": {
+    "/eliminarComida/{id}": {
       "delete": {
         "description": "",
         "responses": {
@@ -53,6 +68,16 @@
     },
     "/obtenerUsuarios": {
       "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/obtenerComidaUsuario": {
+      "post": {
         "description": "",
         "responses": {
           "default": {
@@ -73,6 +98,26 @@
     },
     "/agregarComidaUsuario": {
       "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/editarUsuario/{id}": {
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/eliminarUsuario/{id}": {
+      "delete": {
         "description": "",
         "responses": {
           "default": {

@@ -21,8 +21,8 @@ class Servicio {
     }
    }
 
-   obtenerComidas = async (id) => {
-    const comidas = await this.foodModel.obtenerComidas(id)
+   obtenerComidas = async () => {
+    const comidas = await this.foodModel.obtenerComidas()
     return comidas
    }
 
@@ -35,8 +35,15 @@ class Servicio {
    }
 
    actualizarComida = async (id, comidaNueva) => {
-    const comidaActualizada = await this.foodModel.actualizarComida(id, comidaNueva)
-    return comidaActualizada
+    const res = validar(comidaNueva)
+    if(res.result){
+        const comidaActualizada = await this.foodModel.actualizarComida(id, comidaNueva)
+        return comidaActualizada
+    } else{
+        console.log(res.error)
+        throw res.error
+    }
+    
    }
 
    eliminarComida = async comidaId => {

@@ -26,15 +26,10 @@ class FoodModel{
     });
     }
 
-  obtenerComidas = async (id) =>{
+  obtenerComidas = async () =>{
     const Food = mongoose.model('Food',this.foodSchema)
-      if(id){
-        const comida = await Food.findOne({ _id: id });
-        return comida
-      } else{
         const comidas = await Food.find({})
         return comidas
-      }
       
   }
 
