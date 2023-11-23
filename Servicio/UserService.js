@@ -1,5 +1,6 @@
 import UserModel from "../Model/UserModel.js"
 import FoodService from "./servicioComida.js"
+import axios from 'axios'
 import { validar } from "./validaciones/user.js"
 
 class UserService{
@@ -44,8 +45,11 @@ class UserService{
     }
 
     obtenerComidasUsuario = async (idUsuario)=>{
+      const response = await axios.get('https://api.bluelytics.com.ar/v2/latest');
+      const valorBlue = Number(response.data.blue.value_sell)
       const usuario = await this.findUserById(idUsuario);
       const comidas = await this.model.obtenerComidasUsuario(usuario)
+      comidas.forEach(comida=>{comida.price*=valorBlue})
       console.log(comidas);
       return comidas;
      
