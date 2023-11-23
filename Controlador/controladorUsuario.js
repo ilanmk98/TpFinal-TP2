@@ -9,7 +9,6 @@ class Controlador {
     login = async (req,res) => {
         const name = req.body.name;
         const pass = req.body.pass;
-        console.log(name, pass)
         let usuarioEncontrado = await this.servicio.puedeLogearse(name, pass)
         res.json(usuarioEncontrado)
     }
@@ -42,7 +41,6 @@ class Controlador {
 
     obtenerComidaUsuario = async (req,res)=>{
         const idUsuario = req.body.id;
-        console.log(idUsuario);
         try{
             const comidas = await this.servicio.obtenerComidasUsuario(idUsuario)
             res.status(200).json({comidas:comidas})

@@ -5,10 +5,8 @@ import swaggerUi from 'swagger-ui-express'
 import swaggerFile from './swagger-output.json' assert { type: "json" }
 
 class Server{
-    constructor(port, persistencia){
+    constructor(port){
         this.port = port
-        this.persistencia = persistencia
-
         this.app = express()
 
     }

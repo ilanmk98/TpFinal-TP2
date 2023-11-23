@@ -41,8 +41,6 @@ class FoodModel{
 
    actualizarComida = async (id, datosActualizados) => {
     const Food = mongoose.model('Food',this.foodSchema)
-    console.log(id)
-    console.log(datosActualizados)
     const comidaActualizada = await Food.findByIdAndUpdate(id, datosActualizados, { new: true });
     return comidaActualizada;
    }

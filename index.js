@@ -1,4 +1,4 @@
 import Server from "./server.js"
 import config from "./config.js"
 
-new Server(config.PORT, config.STRCNX).start()
+new Server(config.PORT).start()
