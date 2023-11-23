@@ -43,6 +43,15 @@ describe('POST',()=>{
     })
 })
 
+describe('POST',()=>{
+    it('Lanzar 400 por usuario inexistente',async()=>{
+        const user = {};
+        user.id="12345";
+        const response = await request.post('/obtenerComidaUsuario').send(user)
+        expect(response.status).to.eql(400)
+    })
+})
+
 
 
 
