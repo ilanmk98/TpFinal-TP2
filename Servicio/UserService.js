@@ -46,6 +46,7 @@ class UserService{
     obtenerComidasUsuario = async (idUsuario)=>{
       const usuario = await this.findUserById(idUsuario);
       const comidas = await this.model.obtenerComidasUsuario(usuario)
+      console.log(comidas);
       return comidas;
      
     }

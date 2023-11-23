@@ -46,6 +46,7 @@ class UserModel{
     obtenerComidasUsuario = async (usuario)=>{
       const Comida = mongoose.model('Food',this.foodSchema)
       const usuarioTraido = await usuario.populate('comidas');
+      console.log(usuarioTraido);
       return usuarioTraido.comidas
     }
 

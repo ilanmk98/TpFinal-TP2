@@ -42,9 +42,10 @@ class Controlador {
 
     obtenerComidaUsuario = async (req,res)=>{
         const idUsuario = req.body.id;
+        console.log(idUsuario);
         try{
             const comidas = await this.servicio.obtenerComidasUsuario(idUsuario)
-            res.status(200).json({mensaje:comidas})
+            res.status(200).json({comidas:comidas})
         }
         catch (error)
         {
