@@ -86,29 +86,6 @@ class UserService{
         }
      }
 
-    checkTypes=(user)=>{
-        if (
-            typeof user === 'object' &&
-            user.hasOwnProperty('user') &&
-            user.hasOwnProperty('pass') &&
-            user.hasOwnProperty('consumer') &&
-            user.hasOwnProperty('contact')
-          ) {
-            
-            if (
-              typeof user.user === 'string' &&
-              typeof user.pass === 'string' &&
-              typeof user.consumer === 'boolean' &&
-              typeof user.contact === 'string'
-            ) {
-              
-              console.log('El objeto de usuario es válido.');
-            } else {
-              throw new Error('El objeto de usuario tiene tipos incorrectos.');
-            }
-          } else {
-            throw new Error('El objeto de usuario no tiene todas las propiedades necesarias.');
-          }
-    }
+
 
 } export default UserService

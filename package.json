@@ -20,8 +20,7 @@
     "test": "mocha test/api-ext-test --timeout 10000",
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "swagger": "node ./swagger.js",
-    "api-Ext": "mocha test/api-ext-test --timeout 10000"
+    "swagger": "node ./swagger.js"
   },
   "keywords": [
     "[]"

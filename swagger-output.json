@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Tp final TP2",
-    "description": "Hola",
+    "description": "TpFinal",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
@@ -11,17 +11,12 @@
     "http"
   ],
   "paths": {
-    "/obtenerComidas/{id?}": {
+    "/obtenerComidas": {
       "get": {
-        "description": "Devuelve todas las comidas o la comida solicitada",
+        "description": "",
         "responses": {
-          "200": {
-            "description": "Comidas",
-            "content":{
-              "application/json":{
-                
-              }
-            }
+          "default": {
+            "description": ""
           }
         }
       }
@@ -58,6 +53,16 @@
     },
     "/eliminarComida/{id}": {
       "delete": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
         "description": "",
         "responses": {
           "default": {
