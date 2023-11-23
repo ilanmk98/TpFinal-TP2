@@ -50,6 +50,15 @@ class Servicio {
     const comidaEliminada = await this.foodModel.eliminarComida(comidaId)
     return comidaEliminada
    }
+   
+   findFoodById = async (idComida)=>{
+    const comida = await this.foodModel.findFoodById(idComida)
+    if(!comida)
+    {
+        throw new Error('comida no encontrado');
+    }
+    return comida;
+   }
   
 }
 

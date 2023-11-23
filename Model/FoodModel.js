@@ -51,7 +51,11 @@ class FoodModel{
     await Food.deleteOne( { _id: id })
     return comidaAEliminar
 }
-
+findFoodById = async (idComida)=>{
+  const Food = mongoose.model('Food',this.foodSchema)
+  const comida = await Food.findById(idComida)
+  return comida;
+}
 
 }
 export default FoodModel
